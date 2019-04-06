@@ -1,0 +1,13 @@
+version: '3'
+services:
+  influxdb:
+    build: .
+    hostname: influxdb
+    ports:
+      - 8086:8086
+    # volumes:
+      # - ./influxdb:/var/lib/influxdb
+    # environment:
+      # INFLUXDB_ADMIN_USER: tiger_admin
+      # INFLUXDB_USER: influxdb
+      # INFLUXDB_USER_PASSWORD: influxdb
