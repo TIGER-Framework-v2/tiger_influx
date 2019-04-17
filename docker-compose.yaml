@@ -5,9 +5,10 @@ services:
     hostname: influxdb
     ports:
       - 8086:8086
-    # volumes:
-      # - ./influxdb:/var/lib/influxdb
-    # environment:
-      # INFLUXDB_ADMIN_USER: tiger_admin
-      # INFLUXDB_USER: influxdb
-      # INFLUXDB_USER_PASSWORD: influxdb
+#    volumes:
+#       - ./influxdb:/var/lib/influxdb
+    environment:
+       INFLUXDB_HTTP_AUTH_ENABLED: "true"
+#       INFLUXDB_ADMIN_USER: tiger_admin
+#       INFLUXDB_USER: influxdb
+#       INFLUXDB_USER_PASSWORD: influxdb
