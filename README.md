@@ -114,7 +114,7 @@ If `INFLUXDB_DB` is set, this user will be granted read and write permissions fo
 The password for the user configured with `INFLUXDB_USER`.
 If this is unset, a random password is generated and printed to standard out.
 
-####Initialization Files
+#### Initialization Files
 
 If the Docker image finds any files with the extensions `.sh` or `.iql` inside of the `/docker-entrypoint-initdb.d` folder, it will execute them.
 The order they are executed in is determined by the shell.
