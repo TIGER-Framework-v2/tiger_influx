@@ -1,4 +1,4 @@
-###Running the container
+### Running the container
 
 The InfluxDB image exposes a shared volume under /var/lib/influxdb, so one can mount a host directory to that point to access persisted container data. 
 A typical invocation of the container might be:
@@ -34,7 +34,7 @@ $ docker build --build-arg \
 
 If there is no value passed at build-time, the builder uses the default.
 
-###Exposed Ports
+### Exposed Ports
 
 The following ports are important and are used by InfluxDB.
 
@@ -44,7 +44,7 @@ The following ports are important and are used by InfluxDB.
 
 The HTTP API port will be automatically exposed when using `docker run -P`.
 
-###Configuration
+### Configuration
 
 InfluxDB can be either configured from a config file or using environment variables. 
 To mount a configuration file and use it with the server, one can use this command:
@@ -72,7 +72,7 @@ $ docker run -p 8086:8086 \
       -e INFLUXDB_HTTP_AUTH_ENABLED=true influxdb
 ```
 
-####Database Initialization
+#### Database Initialization
 
 The InfluxDB image contains some extra functionality for initializing a database. 
 These options are not suggested for production, but are quite useful when running standalone instances for testing.
@@ -80,36 +80,36 @@ These options are not suggested for production, but are quite useful when runnin
 The database initialization script will only be called when running influxd. 
 It will not be executed when running any other program.
 
-####Environment Variables
+#### Environment Variables
 
 The InfluxDB image uses several environment variables to automatically configure certain parts of the server. 
 They may significantly aid you in using this image.
 
-#####INFLUXDB_DB
+##### INFLUXDB_DB
 
 Automatically initializes a database with the name of this environment variable.
 
-#####INFLUXDB_HTTP_AUTH_ENABLED
+##### INFLUXDB_HTTP_AUTH_ENABLED
 
 Enables authentication. 
 Either this must be set or `auth-enabled = true` must be set within the configuration file for any authentication related options below to work.
 
-#####INFLUXDB_ADMIN_USER
+##### INFLUXDB_ADMIN_USER
 
 The name of the admin user to be created.
 If this is unset, no admin user is created.
 
-####INFLUXDB_ADMIN_PASSWORD
+##### INFLUXDB_ADMIN_PASSWORD
 
 The password for the admin user configured with `INFLUXDB_ADMIN_USER`.
 If this is unset, a random password is generated and printed to standard out.
 
-#####INFLUXDB_USER
+##### INFLUXDB_USER
 
 The name of a user to be created with no privileges.
 If `INFLUXDB_DB` is set, this user will be granted read and write permissions for that database.
 
-#####INFLUXDB_USER_PASSWORD
+##### INFLUXDB_USER_PASSWORD
 
 The password for the user configured with `INFLUXDB_USER`.
 If this is unset, a random password is generated and printed to standard out.
