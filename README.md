@@ -6,6 +6,7 @@ A typical invocation of the container might be:
 ````bash
 $ docker run -p 8086:8086 \
       -v $PWD:/var/lib/influxdb \
+      -e INFLUXDB_ADMIN_PASSWORD=<admin password> -e INFLUXDB_USER_PASSWORD=<user password>
       influxdb
 ````
 
