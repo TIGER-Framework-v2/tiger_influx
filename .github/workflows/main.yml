@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+
+name: tiger_influx_to_dockerhub
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    tags: releases/[1-9]+.[0-9]+.[0-9]+
+    branches: [ master ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - name: Build docker container
+        run: docker build -t tigerframework/tiger_influxdb .
+
+      - name: Push image to docker
+        run: docker push tigerframework/tiger_influxdb
+
+
