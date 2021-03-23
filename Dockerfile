@@ -1,4 +1,4 @@
-FROM influxdb:alpine
+FROM influxdb:1.8-alpine
 
 ENV HOME_DIR=/home/influx
 
